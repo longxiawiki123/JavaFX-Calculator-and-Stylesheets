@@ -30,26 +30,26 @@ public final class CalculatorController {
 
     @FXML
     private void handleDecimal() {
-        // Something needs to go here
+        model.inputDecimalPoint();
         refreshDisplay();
     }
 
     @FXML
     private void handleOperation(ActionEvent event) {
         Button button = (Button) event.getSource();
-        // Something needs to go here
+        model.selectOperation(Operation.valueOf(button.getUserData().toString()));
         refreshDisplay();
     }
 
     @FXML
     private void handleEquals() {
-        // Something needs to go here
+        model.evaluate();
         refreshDisplay();
     }
 
     @FXML
     private void handleClear() {
-        // Something needs to go here
+        model.clear();
         refreshDisplay();
     }
 

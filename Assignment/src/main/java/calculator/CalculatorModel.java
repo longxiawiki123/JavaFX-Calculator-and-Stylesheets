@@ -59,7 +59,7 @@ public final class CalculatorModel {
     public void inputDecimalPoint() {
         prepareEntry();
         if (!display.contains(".")) {
-            // Something needs to go here
+            display += ".";
         }
     }
 
@@ -83,7 +83,9 @@ public final class CalculatorModel {
                 return;
             }
         }
-        // Something needs to go here
+        leftOperand = Double.parseDouble(display);
+        pendingOperation = operation;
+        startNewNumber = true;
     }
 
     /**
@@ -101,7 +103,8 @@ public final class CalculatorModel {
             return;
         }
         try {
-            // Something needs to go here
+            double rightOperand = Double.parseDouble(display);
+            display = formatResult(pendingOperation.apply(leftOperand, rightOperand));
         } catch (ArithmeticException exception) {
             display = "Error";
             error = true;
